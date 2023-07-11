@@ -6,9 +6,18 @@ services:
     command: "node server.js"
     ports:
       - "5000:5000"
+    volumes:
+    #Bind Mount Point
+      - /home/<USER>/projects/ghost: /var/lib/ghost/content
     depends_on:
       - "mongo"
   mongo:
     image: "mongo"
     ports:
       - "27017:27017"
+      
+      # Named Volume
+  volumes:
+    myvolume:
+      external: false
+    # If you specify external: true you have to create the volume externally, using the command that you specified.
