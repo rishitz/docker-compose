@@ -9,6 +9,9 @@ services:
     volumes:
     #Bind Mount Point
       - /home/<USER>/projects/ghost: /var/lib/ghost/content
+    networks:
+      service_tier:
+      
     depends_on:
       - "mongo"
   mongo:
@@ -21,3 +24,5 @@ services:
     myvolume:
       external: false
     # If you specify external: true you have to create the volume externally, using the command that you specified.
+  networks:
+    service_tier:
